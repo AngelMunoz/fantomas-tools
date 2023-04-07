@@ -1,3 +1,2 @@
-import './bin/App.js';
-import './styles/style.sass';
-import 'notyf/notyf.min.css';
+import './styles/style.css';
+import './App.fs.js';

@@ -33,9 +33,9 @@
       },
       "Fable.React": {
         "type": "Direct",
-        "requested": "[9.2.0, )",
-        "resolved": "9.2.0",
-        "contentHash": "ZMRkZpBy+6ytUHPk0WjRh15kigncmSGLOAbtf12VaSy48mtgqIW4lC/23X/FEvz8tUGwHvBUen2GzUU1G/L+RQ==",
+        "requested": "[9.3.0, )",
+        "resolved": "9.3.0",
+        "contentHash": "ssmZkNpklqD2Q+EGzkAtOpWVhMq4fOIxy3HHXdMZ2QchD2fnuHgXv0f1hjPbUS0F2crLR9/asSe84ED43P9HZQ==",
         "dependencies": {
           "FSharp.Core": "4.7.2",
           "Fable.React.Types": "18.3.0",

@@ -9,23 +9,23 @@ open FantomasTools.Client.FantomasOnline.Model
 open Fetch
 open Thoth.Json
 
-[<Emit("import.meta.env.VITE_FANTOMAS_V2")>]
-let private v2Backend: string = jsNative
+[<ImportMember("/env.js")>]
+let v2Backend: string = jsNative
 
-[<Emit("import.meta.env.VITE_FANTOMAS_V3")>]
-let private v3Backend: string = jsNative
+[<ImportMember("/env.js")>]
+let v3Backend: string = jsNative
 
-[<Emit("import.meta.env.VITE_FANTOMAS_V4")>]
-let private v4Backend: string = jsNative
+[<ImportMember("/env.js")>]
+let v4Backend: string = jsNative
 
-[<Emit("import.meta.env.VITE_FANTOMAS_V5")>]
-let private v5Backend: string = jsNative
+[<ImportMember("/env.js")>]
+let v5Backend: string = jsNative
 
-[<Emit("import.meta.env.VITE_FANTOMAS_MAIN")>]
-let private mainBackend: string = jsNative
+[<ImportMember("/env.js")>]
+let mainBackend: string = jsNative
 
-[<Emit("import.meta.env.VITE_FANTOMAS_PREVIEW")>]
-let private previewBackend: string = jsNative
+[<ImportMember("/env.js")>]
+let previewBackend: string = jsNative
 
 let private backend =
     Map.ofList

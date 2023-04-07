@@ -7,7 +7,7 @@ open FantomasTools.Client
 open FantomasTools.Client.Model
 open FantomasTools.Client.Editor
 
-let private baseUrl: string = emitJsExpr () "import.meta.env.BASE_URL"
+let private baseUrl: string = importMember "/env.js"
 
 let navigation dispatch =
     let title = "Fantomas tools"

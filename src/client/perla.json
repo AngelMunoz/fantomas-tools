@@ -1,0 +1,46 @@
+{
+  "$schema": "https://raw.githubusercontent.com/AngelMunoz/Perla/v1.0.0-beta-013/perla.schema.json",
+  "provider": "jsdelivr",
+  "fable": {
+    "project": "./fsharp/FantomasTools.fsproj",
+    "outDir": "./src"
+  },
+  "mountDirectories": {
+    "/": "./public",
+    "/src": "./src"
+  },
+  "build": {
+    "emitEnvFile": true
+  },
+  "dependencies": [
+    {
+      "name": "@monaco-editor/react",
+      "version": "4.4.6"
+    },
+    {
+      "name": "lz-string",
+      "version": "1.5.0"
+    },
+    {
+      "name": "notyf",
+      "version": "3.10.0"
+    },
+    {
+      "name": "react",
+      "version": "18.2.0"
+    },
+    {
+      "name": "react-dom",
+      "version": "18.2.0"
+    },
+    {
+      "name": "use-sync-external-store",
+      "version": "1.2.0"
+    },
+    {
+      "name": "vis-react",
+      "version": "0.5.1"
+    }
+  ],
+  "devDependencies": []
+}

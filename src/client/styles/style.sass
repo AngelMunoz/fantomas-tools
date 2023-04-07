@@ -1,0 +1,115 @@
+@import "variables"
+
+// Configuration
+@import "../bootstrap/_functions.scss"
+@import "../bootstrap/_variables.scss"
+@import "../bootstrap/_variables-dark.scss"
+@import "../bootstrap/_maps.scss"
+@import "../bootstrap/_mixins.scss"
+@import "../bootstrap/_utilities.scss"
+
+// Layout & components
+@import "../bootstrap/_root"
+@import "../bootstrap/_reboot"
+@import "../bootstrap/_type"
+@import "../bootstrap/_images"
+@import "../bootstrap/_containers"
+@import "../bootstrap/_grid"
+@import "../bootstrap/_tables"
+@import "../bootstrap/_forms"
+@import "../bootstrap/_buttons"
+@import "../bootstrap/_transitions"
+//@import "../bootstrap/_dropdown"
+@import "../bootstrap/_button-group"
+@import "../bootstrap/_nav"
+@import "../bootstrap/_navbar"
+//@import "../bootstrap/_card"
+//@import "../bootstrap/_accordion"
+//@import "../bootstrap/_breadcrumb"
+//@import "../bootstrap/_pagination"
+@import "../bootstrap/_badge"
+@import "../bootstrap/_alert"
+@import "../bootstrap/_progress"
+@import "../bootstrap/_list-group"
+@import "../bootstrap/_close"
+@import "../bootstrap/_toasts"
+@import "../bootstrap/_modal"
+@import "../bootstrap/_tooltip"
+@import "../bootstrap/_popover"
+//@import "../bootstrap/_carousel"
+@import "../bootstrap/_spinners"
+//@import "../bootstrap/_offcanvas"
+//@import "../bootstrap/_placeholders"
+
+// Helpers
+@import "../bootstrap/helpers"
+
+// Utilities
+@import "../bootstrap/utilities/api"
+
+
+#app
+  height: 100vh
+  overflow: hidden
+
+#main
+  height: calc(100vh - 70px)
+  overflow: hidden
+
+#sponsor-button
+  border-color: rgba(27, 31, 35, 0.15)
+  &:hover
+    background-color: rgb(243, 244, 246)
+
+.fa-github-wrapper
+  width: 24px
+  display: inline
+
+  .fa-github
+    position: relative
+    top: -2px
+    left: -2px
+
+.loader
+  background-color: transparentize($white, 0.5)
+  height: 100%
+  .inner
+    position: relative
+    top: 50%
+    left: 50%
+    z-index: 1
+    transform: translate(-50%,-50%)
+    width: $spinner-width
+    height: $spinner-height
+
+.pointer
+  cursor: pointer
+
+.bred
+  border: 1px solid red
+
+.form-control
+  border-radius: 0
+
+.version-bar
+  font-size: 10px
+  line-height: 14px
+  color: $primary
+  // color: $white
+  text-align: center
+  margin-bottom: 0.5rem
+
+#tab-content
+  height: calc(100% - 42px)
+  overflow-y: hidden
+
+  .tab-result
+    height: 100%
+    overflow-y: auto
+
+@import "settings"
+@import "tokens"
+@import "trivia"
+@import "ast"
+@import "oak"
+@import "fantomas"

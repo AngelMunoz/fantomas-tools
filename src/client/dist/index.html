@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/png" href="/fantomas_logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/aadbaa5e13.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3.10.0/notyf.min.css" integrity="sha256-IwkvZNRC/3S26O1gWwjBINmrPZ4zYvPX4z/98OKWHkQ=" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,400&amp;family=Reem+Kufi:wght@400;500;700&amp;display=swap" rel="stylesheet">
+    <meta name="description" content="Tools useful when working on Fantomas">
+    <title>Fantomas Tools</title>
+  <link rel="stylesheet" href="./src/index.css"><script type="importmap">{
+  "imports": {
+    "@monaco-editor/loader": "https://ga.jspm.io/npm:@monaco-editor/loader@1.3.3/lib/es/index.js",
+    "@monaco-editor/react": "https://ga.jspm.io/npm:@monaco-editor/react@4.4.6/lib/es/index.js",
+    "lz-string": "https://esm.sh/lz-string",
+    "notyf": "https://ga.jspm.io/npm:notyf@3.10.0/notyf.es.js",
+    "object-assign": "https://ga.jspm.io/npm:object-assign@4.1.1/index.js",
+    "prop-types": "https://ga.jspm.io/npm:prop-types@15.8.1/index.js",
+    "react": "https://ga.jspm.io/npm:react@18.2.0/index.js",
+    "react-dom": "https://ga.jspm.io/npm:react-dom@18.2.0/index.js",
+    "react-dom/client": "https://ga.jspm.io/npm:react-dom@18.2.0/client.js",
+    "scheduler": "https://ga.jspm.io/npm:scheduler@0.23.0/index.js",
+    "state-local": "https://ga.jspm.io/npm:state-local@1.0.7/lib/es/state-local.js",
+    "use-sync-external-store": "https://ga.jspm.io/npm:use-sync-external-store@1.2.0/index.js",
+    "use-sync-external-store/shim": "https://ga.jspm.io/npm:use-sync-external-store@1.2.0/shim/index.js",
+    "uuid": "https://ga.jspm.io/npm:uuid@7.0.3/dist/index.js",
+    "uuid/dist/md5.js": "https://ga.jspm.io/npm:uuid@7.0.3/dist/md5-browser.js",
+    "uuid/dist/rng.js": "https://ga.jspm.io/npm:uuid@7.0.3/dist/rng-browser.js",
+    "uuid/dist/sha1.js": "https://ga.jspm.io/npm:uuid@7.0.3/dist/sha1-browser.js",
+    "vis-react": "https://ga.jspm.io/npm:vis-react@0.5.1/dist/index.js",
+    "vis-react-core": "https://ga.jspm.io/npm:vis-react-core@1.0.0/lib/vis.min.js"
+  },
+  "scopes": {
+    "https://ga.jspm.io/": {
+      "react": "https://ga.jspm.io/npm:react@16.14.0/index.js"
+    }
+  }
+}</script><link rel="modulepreload" href="https://esm.sh/lz-string"><link rel="modulepreload" href="https://esm.sh/v114/lz-string@1.5.0/esnext/lz-string.mjs"><link rel="modulepreload" href="https://ga.jspm.io/npm:@monaco-editor/loader@1.3.3/lib/es/index.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:@monaco-editor/react@4.4.6/lib/es/index.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:notyf@3.10.0/notyf.es.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:object-assign@4.1.1/index.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:prop-types@15.8.1/_/eb83dd95.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:prop-types@15.8.1/index.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:react-dom@18.2.0/client.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:react-dom@18.2.0/index.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:react@16.14.0/cjs/react.production.min.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:react@16.14.0/index.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:react@18.2.0/index.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:scheduler@0.23.0/index.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:state-local@1.0.7/lib/es/state-local.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:use-sync-external-store@1.2.0/index.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:use-sync-external-store@1.2.0/shim/index.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:uuid@7.0.3/_/88257742.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:uuid@7.0.3/_/cbead610.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:uuid@7.0.3/_/cca46e90.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:uuid@7.0.3/_/df62978e.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:uuid@7.0.3/_/e42f339a.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:uuid@7.0.3/_/f4e5544b.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:uuid@7.0.3/dist/index.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:uuid@7.0.3/dist/md5-browser.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:uuid@7.0.3/dist/rng-browser.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:uuid@7.0.3/dist/sha1-browser.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:vis-react-core@1.0.0/lib/vis.min.js"><link rel="modulepreload" href="https://ga.jspm.io/npm:vis-react@0.5.1/dist/index.js"></head>
+  <body>
+    <div id="app"></div>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script>var global = globalThis</script>
+    
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  
+
+<script type="module" src="./src/index.js"></script></body></html>
