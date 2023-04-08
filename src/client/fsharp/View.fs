@@ -7,7 +7,8 @@ open FantomasTools.Client
 open FantomasTools.Client.Model
 open FantomasTools.Client.Editor
 
-let private baseUrl: string = importMember "/env.js"
+[<ImportMember("./exports.js")>]
+let private baseUrl: string = jsNative
 
 let navigation dispatch =
     let title = "Fantomas tools"

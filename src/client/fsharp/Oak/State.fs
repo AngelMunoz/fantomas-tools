@@ -9,11 +9,11 @@ open FantomasTools.Client.OakViewer.Model
 open FantomasTools.Client.OakViewer.Encoders
 open FantomasTools.Client.OakViewer.Decoders
 
-[<Emit("import.meta.env.VITE_OAK_BACKEND")>]
-let private backend: string = jsNative
+[<ImportMember("./exports.js")>]
+let private oakBackend: string = jsNative
 
 let private fetchOak (payload: OakViewer.ParseRequest) dispatch =
-    let url = sprintf "%s/get-oak" backend
+    let url = sprintf "%s/get-oak" oakBackend
     let json = encodeParseRequest payload
 
     Http.postJson url json
@@ -26,7 +26,7 @@ let private fetchOak (payload: OakViewer.ParseRequest) dispatch =
         | _ -> Msg.Error body
         |> dispatch)
 
-let private fetchFSCVersion () = sprintf "%s/version" backend |> Http.getText
+let private fetchFSCVersion () = sprintf "%s/version" oakBackend |> Http.getText
 
 let private initialModel: Model =
     { Oak = None

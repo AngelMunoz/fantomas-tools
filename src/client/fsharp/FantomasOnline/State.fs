@@ -9,22 +9,22 @@ open FantomasTools.Client.FantomasOnline.Model
 open Fetch
 open Thoth.Json
 
-[<ImportMember("/env.js")>]
+[<ImportMember("./exports.js")>]
 let v2Backend: string = jsNative
 
-[<ImportMember("/env.js")>]
+[<ImportMember("./exports.js")>]
 let v3Backend: string = jsNative
 
-[<ImportMember("/env.js")>]
+[<ImportMember("./exports.js")>]
 let v4Backend: string = jsNative
 
-[<ImportMember("/env.js")>]
+[<ImportMember("./exports.js")>]
 let v5Backend: string = jsNative
 
-[<ImportMember("/env.js")>]
+[<ImportMember("./exports.js")>]
 let mainBackend: string = jsNative
 
-[<ImportMember("/env.js")>]
+[<ImportMember("./exports.js")>]
 let previewBackend: string = jsNative
 
 let private backend =

@@ -7,7 +7,8 @@
   },
   "mountDirectories": {
     "/": "./public",
-    "/src": "./src"
+    "/src": "./src",
+    "/fsharp": "./fsharp"
   },
   "build": {
     "emitEnvFile": true
