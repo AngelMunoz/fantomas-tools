@@ -12,7 +12,6 @@ open Fake.IO
 open Fake.IO.FileSystemOperators
 open Fake.IO.Globbing.Operators
 
-let fablePort = 9060
 let astPort = 7412
 let oakPort = 8904
 let fantomasMainPort = 11084
@@ -97,34 +96,26 @@ let publishLambda name =
 let runLambda name =
     $"dotnet watch run --project {serverDir </> name </> name}.fsproj"
 
-let setViteToProduction () =
-    setEnv "NODE_ENV" "production"
+let setPerlaEnvVars () =
 
     let mainStageUrl =
         "https://arlp8cgo97.execute-api.eu-west-1.amazonaws.com/fantomas-main-stage-1c52a6a"
 
-    setEnv "VITE_AST_BACKEND" $"{mainStageUrl}/ast-viewer"
-    setEnv "VITE_OAK_BACKEND" $"{mainStageUrl}/oak-viewer"
-    setEnv "VITE_FANTOMAS_V4" $"{mainStageUrl}/fantomas/v4"
-    setEnv "VITE_FANTOMAS_V5" $"{mainStageUrl}/fantomas/v5"
-    setEnv "VITE_FANTOMAS_MAIN" $"{mainStageUrl}/fantomas/main"
-    setEnv "VITE_FANTOMAS_PREVIEW" $"{mainStageUrl}/fantomas/preview"
+    setEnv "PERLA_AST_BACKEND" $"{mainStageUrl}/ast-viewer"
+    setEnv "PERLA_OAK_BACKEND" $"{mainStageUrl}/oak-viewer"
+    setEnv "PERLA_FANTOMAS_V4" $"{mainStageUrl}/fantomas/v4"
+    setEnv "PERLA_FANTOMAS_V5" $"{mainStageUrl}/fantomas/v5"
+    setEnv "PERLA_FANTOMAS_MAIN" $"{mainStageUrl}/fantomas/main"
+    setEnv "PERLA_FANTOMAS_PREVIEW" $"{mainStageUrl}/fantomas/preview"
 
 pipeline "Build" {
     workingDir __SOURCE_DIRECTORY__
-    stage "yarn install" {
-        workingDir clientDir
-        run "yarn"
-    }
+
     stage "dotnet install" {
         run "dotnet tool restore"
         run "dotnet restore"
     }
     stage "check format F#" { run "dotnet fantomas src infrastructure build.fsx --check" }
-    stage "check format JS" {
-        workingDir clientDir
-        run "yarn lint"
-    }
     stage "clean" {
         run (fun _ ->
             async {
@@ -153,14 +144,14 @@ pipeline "Build" {
         run "dotnet tool restore"
         run (fun _ ->
             async {
-                setViteToProduction ()
+                setPerlaEnvVars ()
                 return 0
             })
-        run "yarn build"
+        run "perla build"
         run (fun _ ->
             async {
-                File.Create(clientDir </> "build" </> ".nojekyll").Close()
-                Shell.cp_r (clientDir </> "build") (artifactDir </> "client")
+                File.Create(clientDir </> "dist" </> ".nojekyll").Close()
+                Shell.cp_r (clientDir </> "dist") (artifactDir </> "client")
                 return 0
             })
     }
@@ -209,29 +200,8 @@ pipeline "FormatChanged" {
                             .Task.ContinueWith(fun (t: Task<CommandResult>) -> t.Result.ExitCode)
                         |> Async.AwaitTask
 
-                let prettierArgument =
-                    files
-                    |> Array.choose (fun path ->
-                        if isJSFile path then
-                            Some(path.Replace("src/client/", ""))
-                        else
-                            None)
-                    |> String.concat " "
-
-                let! prettierExit =
-                    if String.IsNullOrWhiteSpace prettierArgument then
-                        async.Return 0
-                    else
-                        Cli
-                            .Wrap("yarn")
-                            .WithWorkingDirectory(clientDir)
-                            .WithArguments($"prettier --write {prettierArgument}")
-                            .ExecuteBufferedAsync()
-                            .Task.ContinueWith(fun (t: Task<BufferedCommandResult>) -> t.Result.ExitCode)
-                        |> Async.AwaitTask
-
-                // Exit code should in both cases by zero
-                return fantomasExit + prettierExit
+                // Exit code should be zero
+                return fantomasExit
             }
             |> Async.RunSynchronously)
     }
@@ -239,10 +209,6 @@ pipeline "FormatChanged" {
 }
 
 pipeline "Watch" {
-    stage "yarn install" {
-        workingDir clientDir
-        run "yarn"
-    }
     stage "dotnet install" {
         run "dotnet tool restore"
         run "dotnet restore"
@@ -259,13 +225,12 @@ pipeline "Watch" {
                         let gitpodEnv = gitpodEnv.Replace("https://", "")
                         sprintf "https://%i-%s/%s" port gitpodEnv subPath
 
-                setEnv "NODE_ENV" "development"
-                setEnv "VITE_AST_BACKEND" (localhostBackend astPort "ast-viewer")
-                setEnv "VITE_OAK_BACKEND" (localhostBackend oakPort "oak-viewer")
-                setEnv "VITE_FANTOMAS_V4" (localhostBackend fantomasV4Port "fantomas/v4")
-                setEnv "VITE_FANTOMAS_V5" (localhostBackend fantomasV5Port "fantomas/v5")
-                setEnv "VITE_FANTOMAS_MAIN" (localhostBackend fantomasMainPort "fantomas/main")
-                setEnv "VITE_FANTOMAS_PREVIEW" (localhostBackend fantomasPreviewPort "fantomas/preview")
+                setEnv "PERLA_AST_BACKEND" (localhostBackend astPort "ast-viewer")
+                setEnv "PERLA_OAK_BACKEND" (localhostBackend oakPort "oak-viewer")
+                setEnv "PERLA_FANTOMAS_V4" (localhostBackend fantomasV4Port "fantomas/v4")
+                setEnv "PERLA_FANTOMAS_V5" (localhostBackend fantomasV5Port "fantomas/v5")
+                setEnv "PERLA_FANTOMAS_MAIN" (localhostBackend fantomasMainPort "fantomas/main")
+                setEnv "PERLA_FANTOMAS_PREVIEW" (localhostBackend fantomasPreviewPort "fantomas/preview")
                 return 0
             })
     }
@@ -280,7 +245,7 @@ pipeline "Watch" {
         stage "frontend" {
             workingDir clientDir
             run "dotnet tool restore"
-            run "dotnet fable watch ./fsharp/FantomasTools.fsproj --outDir ./src/bin --run vite"
+            run "dotnet perla serve"
         }
     }
     runIfOnlySpecified true
