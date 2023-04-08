@@ -10,8 +10,10 @@
     "/src": "./src",
     "/fsharp": "./fsharp"
   },
-  "build": {
-    "emitEnvFile": true
+  "esbuild": {
+    "externals": [
+      "AppEnvironment"
+    ]
   },
   "dependencies": [
     {

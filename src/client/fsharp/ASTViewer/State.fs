@@ -13,7 +13,7 @@ open FantomasTools.Client
 open FantomasTools.Client.ASTViewer.Decoders
 open FantomasTools.Client.ASTViewer.Encoders
 
-[<ImportMember("../exports.js")>]
+[<Import("AST_BACKEND", "AppEnvironment")>]
 let private astBackend: string = jsNative
 
 let private getVersion () =

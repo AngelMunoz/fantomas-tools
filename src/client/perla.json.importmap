@@ -18,11 +18,12 @@
     "uuid/dist/rng.js": "https://ga.jspm.io/npm:uuid@7.0.3/dist/rng-browser.js",
     "uuid/dist/sha1.js": "https://ga.jspm.io/npm:uuid@7.0.3/dist/sha1-browser.js",
     "vis-react": "https://ga.jspm.io/npm:vis-react@0.5.1/dist/index.js",
-    "vis-react-core": "https://ga.jspm.io/npm:vis-react-core@1.0.0/lib/vis.min.js"
+    "vis-react-core": "https://ga.jspm.io/npm:vis-react-core@1.0.0/lib/vis.min.js",
+    "AppEnvironment": "/env.js"
   },
   "scopes": {
     "https://ga.jspm.io/": {
-      "react": "https://ga.jspm.io/npm:react@16.14.0/index.js"
+      "react": "https://ga.jspm.io/npm:react@18.2.0/index.js"
     }
   }
 }
