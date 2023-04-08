@@ -13,10 +13,11 @@ open FantomasTools.Client
 open FantomasTools.Client.ASTViewer.Decoders
 open FantomasTools.Client.ASTViewer.Encoders
 
-[<ImportMember("./exports.js")>]
+[<ImportMember("../exports.js")>]
 let private astBackend: string = jsNative
 
-let private getVersion () = sprintf "%s/%s" astBackend "version" |> Http.getText
+let private getVersion () =
+    sprintf "%s/%s" astBackend "version" |> Http.getText
 
 let private fetchNodeRequest url (payload: Shared.Request) dispatch =
     let json = encodeInput payload

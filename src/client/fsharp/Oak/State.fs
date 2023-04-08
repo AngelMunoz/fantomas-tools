@@ -9,7 +9,7 @@ open FantomasTools.Client.OakViewer.Model
 open FantomasTools.Client.OakViewer.Encoders
 open FantomasTools.Client.OakViewer.Decoders
 
-[<ImportMember("./exports.js")>]
+[<ImportMember("../exports.js")>]
 let private oakBackend: string = jsNative
 
 let private fetchOak (payload: OakViewer.ParseRequest) dispatch =
